@@ -49,30 +49,25 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
 
       inactiveIcon: SvgPicture.asset('assets/images/scan_icon.svg'),
       icon: SvgPicture.asset('assets/images/scan_icon_active.svg'),
-      activeColorPrimary: AppColor.label,
-              activeColorSecondary: AppColor.iconMuted, 
-
+      activeColorPrimary: AppColor.gray,
+      activeColorSecondary: AppColor.iconMuted,
     ),
     PersistentBottomNavBarItem(
       title: 'Generate',
       textStyle: AppTextStyles.inter600Size12,
       inactiveIcon: SvgPicture.asset('assets/images/Generate_icon.svg'),
       icon: SvgPicture.asset('assets/images/Generate_icon_active.svg'),
-      activeColorPrimary: AppColor.label,
-        activeColorSecondary: AppColor.iconMuted, 
-
-      
-
+      activeColorPrimary: AppColor.gray,
+      activeColorSecondary: AppColor.iconMuted,
     ),
     PersistentBottomNavBarItem(
       title: 'History',
       textStyle: AppTextStyles.inter600Size12,
       inactiveIcon: SvgPicture.asset('assets/images/history_icon.svg'),
       icon: SvgPicture.asset('assets/images/history_icon_active.svg'),
-      activeColorPrimary: AppColor.label,
-      inactiveColorPrimary: AppColor.iconMuted, 
-              activeColorSecondary: AppColor.iconMuted, 
-
+      activeColorPrimary: AppColor.gray,
+      inactiveColorPrimary: AppColor.iconMuted,
+      activeColorSecondary: AppColor.iconMuted,
     ),
   ];
 }
