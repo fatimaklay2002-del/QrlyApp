@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrly_app/core/theme/app_text_style.dart';
 import 'package:qrly_app/core/utils/app_color.dart';
+import 'package:qrly_app/core/utils/app_strings.dart';
 
 class CustomFilterTabs extends StatefulWidget {
   final Function(int) onTabSelected;
@@ -13,7 +14,7 @@ class CustomFilterTabs extends StatefulWidget {
 
 class _CustomFilterTabsState extends State<CustomFilterTabs> {
   int _selectedIndex = 0;
-  final List<String> _tabs = ['All', 'Scanned', 'Generated'];
+  final List<String> _tabs = ['All', AppStrings.scanned, AppStrings.generated];
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _CustomFilterTabsState extends State<CustomFilterTabs> {
                 color: isSelected ?  AppColor.primary : AppColor.white,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: isSelected ? AppColor.primary : AppColor.gray,
+                  color: isSelected ? AppColor.primary : AppColor.chipBorder ,
                 ),
               ),
               child: Text(

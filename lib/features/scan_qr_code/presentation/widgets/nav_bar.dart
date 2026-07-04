@@ -49,7 +49,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
 
       inactiveIcon: SvgPicture.asset('assets/images/scan_icon.svg'),
       icon: SvgPicture.asset('assets/images/scan_icon_active.svg'),
-      activeColorPrimary: AppColor.gray,
+      activeColorPrimary: AppColor.chipBorder,
       activeColorSecondary: AppColor.iconMuted,
     ),
     PersistentBottomNavBarItem(
@@ -57,7 +57,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       textStyle: AppTextStyles.inter600Size12,
       inactiveIcon: SvgPicture.asset('assets/images/Generate_icon.svg'),
       icon: SvgPicture.asset('assets/images/Generate_icon_active.svg'),
-      activeColorPrimary: AppColor.gray,
+      activeColorPrimary: AppColor.chipBorder,
       activeColorSecondary: AppColor.iconMuted,
     ),
     PersistentBottomNavBarItem(
@@ -65,7 +65,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       textStyle: AppTextStyles.inter600Size12,
       inactiveIcon: SvgPicture.asset('assets/images/history_icon.svg'),
       icon: SvgPicture.asset('assets/images/history_icon_active.svg'),
-      activeColorPrimary: AppColor.gray,
+      activeColorPrimary: AppColor.chipBorder,
       inactiveColorPrimary: AppColor.iconMuted,
       activeColorSecondary: AppColor.iconMuted,
     ),

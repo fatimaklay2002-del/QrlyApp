@@ -14,6 +14,6 @@ class AppColor {
   static const border = Color(0xffEEEDFE);
   static const divider = Color(0xffE2E2E6);
   static const white = Color(0xffFFFFFF);
-  static const gray = Color(0xffBFBAFF);
+  static const chipBorder  = Color(0xffBFBAFF);
   static const darkGray = Color(0xff474552);
 }

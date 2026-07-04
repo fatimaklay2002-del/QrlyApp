@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qrly_app/core/utils/app_color.dart';
+import 'package:qrly_app/core/utils/app_strings.dart';
 import 'package:qrly_app/features/generate_qr_code/presentation/widgets/secondary_action_button.dart';
 import 'package:qrly_app/features/generate_qr_code/presentation/widgets/url_input_field.dart';
 
@@ -37,7 +38,7 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
             children: [
                SectionHeader(
                 leadingIcon: SvgPicture.asset('assets/images/scan_icon_active.svg', width: 24, height: 24),
-                title: 'Generate QR Code',
+                title: AppStrings.generate,
               ),
               const SizedBox(height: 24),
               UrlInputField(
@@ -48,7 +49,7 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
               QrPreviewCard(data: _currentText),
               const SizedBox(height: 24),
               PrimaryActionButton(
-                label: 'Save to Gallery',
+                label: AppStrings.saveToGallery,
                 icon: Icons.save_alt_outlined,
                 onTap: hasContent
                     ? () {
@@ -57,7 +58,7 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
               ),
               const SizedBox(height: 12),
               SecondaryActionButton(
-                label: 'Share',
+                label: AppStrings.share,
                 icon: Icons.share_outlined,
                 onTap: hasContent
                     ? () {

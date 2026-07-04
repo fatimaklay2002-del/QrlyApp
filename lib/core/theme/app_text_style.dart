@@ -45,4 +45,11 @@ static final TextStyle inter400Size14 = TextStyle(
   fontWeight: FontWeight.w400,
   color: AppColor.mutedText,
 );
+
+static final TextStyle inter500Size14 = TextStyle(
+  fontSize: 14,
+  fontFamily: 'Inter',
+  fontWeight: FontWeight.w500,
+  color: AppColor.secondaryText,
+);
 }
