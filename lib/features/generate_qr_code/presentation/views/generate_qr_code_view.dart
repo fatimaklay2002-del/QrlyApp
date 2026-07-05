@@ -44,11 +44,7 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
             }
           },
           builder: (context, state) {
-            if (state.saved && !state.isSaving) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Saved to history and gallery')),
-              );
-            }
+      
            return SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: Column(
