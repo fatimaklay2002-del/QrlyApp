@@ -19,9 +19,10 @@ class ScanHistoryView extends StatelessWidget {
         child: BlocBuilder<HistoryCubit, HistoryState>(
           builder: (context, state) {
             final items = state.filteredItems;
-
+ 
             return SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -42,6 +43,8 @@ class ScanHistoryView extends StatelessWidget {
                   const SizedBox(height: 20),
                   if (items.isEmpty)
                     const HistoryEmptyState()
+                  else if (state.filter == HistoryFilter.all)
+                    ...buildAllGroupedByType(context, items)
                   else
                     ...buildGroupedHistoryItems(context, items),
                 ],

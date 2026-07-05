@@ -7,27 +7,27 @@ Future<void> showScanResultDialog(BuildContext context, String value) async {
     context: context,
     builder: (ctx) => AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      title: const Text('تم المسح بنجاح'),
+      title: const Text('Scan Successful'),
       content: SingleChildScrollView(child: SelectableText(value)),
       actions: [
         TextButton.icon(
           onPressed: () {
             Clipboard.setData(ClipboardData(text: value));
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('تم النسخ')),
+              const SnackBar(content: Text('Text copied')),
             );
           },
           icon: const Icon(Icons.copy),
-          label: const Text('نسخ'),
+          label: const Text('Copy'),
         ),
         TextButton.icon(
           onPressed: () => Share.share(value),
           icon: const Icon(Icons.share),
-          label: const Text('مشاركة'),
+          label: const Text('Share'),
         ),
         FilledButton(
           onPressed: () => Navigator.of(ctx).pop(),
-          child: const Text('تم'),
+          child: const Text('Done'),
         ),
       ],
     ),

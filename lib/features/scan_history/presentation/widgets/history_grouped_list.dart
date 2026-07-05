@@ -1,3 +1,5 @@
+import 'package:Qrly/features/scan_history/presentation/widgets/history_item_dialog.dart';
+import 'package:Qrly/features/scan_history/presentation/widgets/history_type_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +28,10 @@ List<Widget> buildGroupedHistoryItems(
         direction: DismissDirection.endToStart,
         onDismissed: (_) => context.read<HistoryCubit>().deleteItem(item.id),
         background: _buildDeleteBackground(),
-        child: HistoryListItem(item: item),
+        child: HistoryListItem(
+          item: item,
+          onTap: () => showHistoryItemDialog(context, item),
+        ),
       ),
     );
   }
@@ -44,4 +49,24 @@ Widget _buildDeleteBackground() {
     ),
     child: const Icon(Icons.delete_outline, color: Colors.white),
   );
+}
+List<Widget> buildAllGroupedByType(
+    BuildContext context,
+    List<QrHistoryItem> items,
+    ) {
+  final scanned =
+  items.where((i) => i.type == HistoryItemType.scanned).toList();
+  final generated =
+  items.where((i) => i.type == HistoryItemType.generated).toList();
+
+  return [
+    if (scanned.isNotEmpty) ...[
+      const HistoryTypeHeader(label: 'Scanned'),
+      ...buildGroupedHistoryItems(context, scanned),
+    ],
+    if (generated.isNotEmpty) ...[
+      const HistoryTypeHeader(label: 'Generated'),
+      ...buildGroupedHistoryItems(context, generated),
+    ],
+  ];
 }

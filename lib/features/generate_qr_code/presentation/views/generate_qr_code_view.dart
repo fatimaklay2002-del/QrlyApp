@@ -36,15 +36,20 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
       backgroundColor: AppColor.background,
       body: SafeArea(
         child: BlocConsumer<GenerateCubit, GenerateState>(
-          // side-effect بس (SnackBar) — بعيد تمامًا عن منطق الحفظ نفسه
           listener: (context, state) {
             if (state.saved && !state.isSaving) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('تم الحفظ في السجل والمعرض')),
+                const SnackBar(content: Text('Saved to history and gallery')),
               );
             }
           },
-          builder: (context, state) => SingleChildScrollView(
+          builder: (context, state) {
+            if (state.saved && !state.isSaving) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Saved to history and gallery')),
+              );
+            }
+           return SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -68,8 +73,8 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
                 const SizedBox(height: 24),
                 PrimaryActionButton(
                   label: state.isSaving
-                      ? 'جاري الحفظ...'
-                      : (state.saved ? 'تم الحفظ' : 'Save to Gallery'),
+                      ? 'Saving...'
+                      : (state.saved ? 'Saved' : 'Save to Gallery'),
                   icon: state.saved ? Icons.check : Icons.save_alt_outlined,
                   onTap: state.hasContent && !state.saved && !state.isSaving
                       ? () async {
@@ -91,7 +96,8 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
                 ),
               ],
             ),
-          ),
+          );
+        }
         ),
       ),
     );

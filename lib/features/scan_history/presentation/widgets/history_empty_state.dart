@@ -10,7 +10,7 @@ class HistoryEmptyState extends StatelessWidget {
       padding: EdgeInsets.only(top: 60),
       child: Center(
         child: Text(
-          'لا يوجد عناصر بعد.\nامسح أو أنشئ كود QR ليظهر هنا.',
+          'No items yet.\nScan or generate a QR code to see it here.',
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.grey),
         ),
