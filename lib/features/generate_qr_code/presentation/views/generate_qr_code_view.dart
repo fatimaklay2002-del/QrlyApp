@@ -53,7 +53,7 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
                 SectionHeader(
                   title: AppStrings.generate,
                   leadingIcon: SvgPicture.asset(
-                    'assets/icons/generate_icon.svg',
+                    'assets/images/generate_icon.svg',
                   ),
                 ),
                 const SizedBox(height: 24),

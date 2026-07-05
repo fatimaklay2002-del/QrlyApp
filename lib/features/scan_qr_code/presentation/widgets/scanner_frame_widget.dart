@@ -4,7 +4,7 @@ import '../../../../core/utils/app_color.dart';
 import 'corner_frame_painter.dart';
 
 class ScannerFrame extends StatelessWidget {
-  const ScannerFrame();
+  const ScannerFrame({super.key});
  
   @override
   Widget build(BuildContext context) {

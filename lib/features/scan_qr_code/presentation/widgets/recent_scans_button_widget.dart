@@ -5,7 +5,7 @@ import '../../../../core/theme/app_text_style.dart' show AppTextStyles;
 import '../../../../core/utils/app_color.dart';
 
 class RecentScansButton extends StatelessWidget {
-  const RecentScansButton();
+  const RecentScansButton({super.key});
  
   @override
   Widget build(BuildContext context) {

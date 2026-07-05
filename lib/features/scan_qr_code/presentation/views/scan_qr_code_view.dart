@@ -35,17 +35,15 @@ class _ScanQrCodeViewState extends State<ScanQrCodeView> {
     if (value == null || value.isEmpty) return;
     if (context.read<ScanCubit>().state.isProcessing) return;
 
-    // لسه في فترة التهدئة بعد آخر مسحة؟ تجاهلي أي اكتشاف
     final now = DateTime.now();
     if (_ignoreDetectionsUntil != null && now.isBefore(_ignoreDetectionsUntil!)) {
       return;
     }
 
     await _controller.stop();
-    await context.read<ScanCubit>().handleDetected(value);
+     context.read<ScanCubit>().handleDetected(value);
     if (mounted) await showScanResultDialog(context, value);
 
-    // العدّ بيبدأ دلوقتي بعد ما الديالوج اتقفل، مش من وقت الاكتشاف
     _ignoreDetectionsUntil = DateTime.now().add(const Duration(seconds: 3));
     await _controller.start();
   }
