@@ -21,7 +21,7 @@ Future<void> showScanResultDialog(BuildContext context, String value) async {
           label: const Text('Copy'),
         ),
         TextButton.icon(
-          onPressed: () => Share.share(value),
+          onPressed: () => SharePlus.instance.share(ShareParams(text: value)),
           icon: const Icon(Icons.share),
           label: const Text('Share'),
         ),

@@ -1,6 +1,5 @@
  
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ScanOverlay extends StatelessWidget {
   const ScanOverlay({super.key});

@@ -13,6 +13,8 @@ import '../views/scan_qr_code_view.dart';
 class NavBar extends StatelessWidget {
   static final PersistentTabController controller = PersistentTabController(initialIndex: 0);
 
+  const NavBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(

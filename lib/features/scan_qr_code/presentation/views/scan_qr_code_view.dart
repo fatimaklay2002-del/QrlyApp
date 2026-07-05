@@ -1,5 +1,6 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -18,39 +19,53 @@ class ScanQrCodeView extends StatefulWidget {
   State<ScanQrCodeView> createState() => _ScanQrCodeViewState();
 }
 
-class _ScanQrCodeViewState extends State<ScanQrCodeView> {
+class _ScanQrCodeViewState extends State<ScanQrCodeView>
+    with WidgetsBindingObserver {
   final MobileScannerController _controller = MobileScannerController(
     detectionSpeed: DetectionSpeed.noDuplicates,
   );
-  DateTime? _ignoreDetectionsUntil;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (!_controller.value.hasCameraPermission) return;
+    switch (state) {
+      case AppLifecycleState.resumed:
+        unawaited(_controller.start());
+        break;
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.paused:
+      case AppLifecycleState.detached:
+      case AppLifecycleState.hidden:
+        unawaited(_controller.stop());
+        break;
+    }
   }
 
   Future<void> _onDetect(BarcodeCapture capture) async {
     final value = capture.barcodes.isNotEmpty
         ? capture.barcodes.first.rawValue
         : null;
-    if (value == null || value.isEmpty) return;
-    if (context.read<ScanCubit>().state.isProcessing) return;
 
-    final now = DateTime.now();
-    if (_ignoreDetectionsUntil != null &&
-        now.isBefore(_ignoreDetectionsUntil!)) {
-      return;
-    }
-    await _controller.stop();
+    final cubit = context.read<ScanCubit>();
+    if (!cubit.shouldProcess(value)) return;
 
-
+    await cubit.handleDetected(value!);
     if (!mounted) return;
-    await context.read<ScanCubit>().handleDetected(value);
-    if (!mounted) return;
+
     await showScanResultDialog(context, value);
-
-    _ignoreDetectionsUntil = DateTime.now().add(const Duration(seconds: 3));
-    await _controller.start();
+    cubit.onDialogClosed();
   }
 
   @override

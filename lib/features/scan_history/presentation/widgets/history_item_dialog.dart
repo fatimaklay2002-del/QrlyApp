@@ -27,7 +27,7 @@ Future<void> showHistoryItemDialog(
           label: const Text('Copy'),
         ),
         TextButton.icon(
-          onPressed: () => Share.share(item.content),
+          onPressed: () => SharePlus.instance.share(ShareParams(text: item.content)),
           icon: const Icon(Icons.share),
           label: const Text('Share'),
         ),
