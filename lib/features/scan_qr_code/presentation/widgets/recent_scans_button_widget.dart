@@ -1,7 +1,8 @@
+import 'package:Qrly/features/scan_qr_code/presentation/widgets/nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:qrly_app/core/utils/app_color.dart';
 
 import '../../../../core/theme/app_text_style.dart' show AppTextStyles;
+import '../../../../core/utils/app_color.dart';
 
 class RecentScansButton extends StatelessWidget {
   const RecentScansButton();
@@ -10,7 +11,7 @@ class RecentScansButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // TODO: فتح آخر السجل (Recent Scans)
+        NavBar.controller.jumpToTab(2);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),

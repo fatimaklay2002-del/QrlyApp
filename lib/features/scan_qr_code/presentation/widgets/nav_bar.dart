@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
-import 'package:qrly_app/core/theme/app_text_style.dart';
-import 'package:qrly_app/core/utils/app_color.dart';
 
+import '../../../../core/theme/app_text_style.dart';
+import '../../../../core/utils/app_color.dart' show AppColor;
 import '../../../generate_qr_code/presentation/views/generate_qr_code_view.dart'
     show GenerateQrCodeView;
 import '../../../scan_history/presentation/views/scan_history_view.dart';
 import '../views/scan_qr_code_view.dart';
 
-PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
-// ignore: use_key_in_widget_constructors
 class NavBar extends StatelessWidget {
+  static final PersistentTabController controller = PersistentTabController(initialIndex: 0);
+
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
-      controller: _controller,
+      controller: controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
       resizeToAvoidBottomInset: true,

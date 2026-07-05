@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qrly_app/core/utils/app_color.dart';
-import 'package:qrly_app/features/scan_qr_code/presentation/widgets/corner_frame_painter.dart';
+
+import '../../../../core/utils/app_color.dart';
+import 'corner_frame_painter.dart';
 
 class ScannerFrame extends StatelessWidget {
   const ScannerFrame();

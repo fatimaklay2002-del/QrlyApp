@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:qrly_app/core/theme/app_text_style.dart';
-import 'package:qrly_app/core/utils/app_color.dart';
+
 
 import '../../../../core/models/scan_history_model.dart';
+import '../../../../core/theme/app_text_style.dart';
+import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/date_time_helper.dart';
 
 class HistoryListItem extends StatelessWidget {
   final QrHistoryItem item;
   final VoidCallback? onTap;
-
+ 
   const HistoryListItem({super.key, required this.item, this.onTap});
-
+ 
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -49,11 +51,13 @@ class HistoryListItem extends StatelessWidget {
                     item.content,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.inter500Size14
+                    style: AppTextStyles.inter500Size14.copyWith(
+                      color: AppColor.secondaryText,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    item.timestamp.toString(),
+                    formatRelativeTime(item.timestamp), 
                     style: AppTextStyles.inter600Size12.copyWith(
                       color: AppColor.mutedText,
                     ),

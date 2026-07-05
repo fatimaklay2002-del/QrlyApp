@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:qrly_app/core/models/scan_history_model.dart';
+
+import '../models/scan_history_model.dart';
 
 class HistoryRepository {
   static const String _boxName = 'qr_history_box';

@@ -2,12 +2,17 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qrly_app/core/utils/app_color.dart';
+
+import '../../../../core/utils/app_color.dart';
 
 class GlassIconButton extends StatelessWidget {
   final String iconPath;
   final VoidCallback onTap;
-  const GlassIconButton({super.key, required this.iconPath, required this.onTap});
+  const GlassIconButton({
+    super.key,
+    required this.iconPath,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +41,7 @@ class GlassIconButton extends StatelessWidget {
           ),
         ),
       ),
-    );;
+    );
+    ;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qrly_app/core/theme/app_text_style.dart';
-import 'package:qrly_app/core/utils/app_color.dart';
+
+import '../../../../core/theme/app_text_style.dart';
+import '../../../../core/utils/app_color.dart';
 
 class DateSectionLabel extends StatelessWidget {
   final String label;

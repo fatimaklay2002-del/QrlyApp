@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:qrly_app/core/theme/app_text_style.dart';
-import 'package:qrly_app/core/utils/app_color.dart';
-import 'package:qrly_app/core/utils/app_strings.dart';
+
+import '../../../../core/theme/app_text_style.dart';
+import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/app_strings.dart';
 
 class CustomFilterTabs extends StatefulWidget {
   final Function(int) onTabSelected;
@@ -31,16 +32,13 @@ class _CustomFilterTabsState extends State<CustomFilterTabs> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
               decoration: BoxDecoration(
-                color: isSelected ?  AppColor.primary : AppColor.white,
+                color: isSelected ? AppColor.primary : AppColor.white,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: isSelected ? AppColor.primary : AppColor.chipBorder ,
+                  color: isSelected ? AppColor.primary : AppColor.chipBorder,
                 ),
               ),
-              child: Text(
-                _tabs[index],
-                style: AppTextStyles.inter600Size12
-              ),
+              child: Text(_tabs[index], style: AppTextStyles.inter600Size12),
             ),
           ),
         );

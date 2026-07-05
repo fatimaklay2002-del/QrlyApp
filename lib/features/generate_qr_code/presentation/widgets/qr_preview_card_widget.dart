@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:qrly_app/core/theme/app_text_style.dart';
-import 'package:qrly_app/core/utils/app_color.dart';
+
+import '../../../../core/theme/app_text_style.dart';
+import '../../../../core/utils/app_color.dart';
 
 class QrPreviewCard extends StatelessWidget {
   final String data;
- 
+
   const QrPreviewCard({super.key, required this.data});
- 
+
   @override
   Widget build(BuildContext context) {
     final bool hasContent = data.trim().isNotEmpty;
- 
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 20),
@@ -44,11 +45,7 @@ class QrPreviewCard extends StatelessWidget {
                       color: AppColor.primary,
                     ),
                   )
-                : Icon(
-                    Icons.qr_code_2,
-                    size: 64,
-                    color: AppColor.divider,
-                  ),
+                : Icon(Icons.qr_code_2, size: 64, color: AppColor.divider),
           ),
           const SizedBox(height: 16),
           Text(
@@ -63,4 +60,3 @@ class QrPreviewCard extends StatelessWidget {
     );
   }
 }
- 
