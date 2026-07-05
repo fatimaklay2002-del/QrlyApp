@@ -44,56 +44,61 @@ class _GenerateQrCodeViewState extends State<GenerateQrCodeView> {
             }
           },
           builder: (context, state) {
-      
-           return SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SectionHeader(
-                  title: AppStrings.generate,
-                  leadingIcon: SvgPicture.asset(
-                    'assets/images/Generate_icon_active.svg',
+            return SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SectionHeader(
+                    title: AppStrings.generate,
+                    leadingIcon: SvgPicture.asset(
+                      'assets/images/Generate_icon_active.svg',
+                    ),
                   ),
-                ),
-                const SizedBox(height: 24),
-                UrlInputField(
-                  controller: _textController,
-                  onChanged: context.read<GenerateCubit>().updateText,
-                ),
-                const SizedBox(height: 20),
-                RepaintBoundary(
-                  key: _qrKey,
-                  child: QrPreviewCard(data: state.text),
-                ),
-                const SizedBox(height: 24),
-                PrimaryActionButton(
-                  label: state.isSaving
-                      ? 'Saving...'
-                      : (state.saved ? 'Saved' : 'Save to Gallery'),
-                  icon: state.saved ? Icons.check : Icons.save_alt_outlined,
-                  onTap: state.hasContent && !state.saved && !state.isSaving
-                      ? () async {
-                          final bytes = await QrImageService.captureBytes(
-                            _qrKey,
-                          );
-                          if (!context.mounted) return;
-                          context.read<GenerateCubit>().saveToHistory(bytes);
-                        }
-                      : null,
-                ),
-                const SizedBox(height: 12),
-                SecondaryActionButton(
-                  label: 'Share',
-                  icon: Icons.share_outlined,
-                  onTap: state.hasContent
-                      ? () => QrImageService.shareQr(_qrKey, state.text)
-                      : null,
-                ),
-              ],
-            ),
-          );
-        }
+                  const SizedBox(height: 24),
+                  UrlInputField(
+                    controller: _textController,
+                    onChanged: context.read<GenerateCubit>().updateText,
+                  ),
+                  const SizedBox(height: 20),
+                  RepaintBoundary(
+                    key: _qrKey,
+                    child: QrPreviewCard(data: state.text),
+                  ),
+                  const SizedBox(height: 24),
+                  PrimaryActionButton(
+                    label: state.isSaving
+                        ? 'Saving...'
+                        : (state.saved ? 'Saved' : 'Save to Gallery'),
+                    icon: state.saved ? Icons.check : Icons.save_alt_outlined,
+                    onTap: state.hasContent && !state.saved && !state.isSaving
+                        ? () async {
+                            final bytes = await QrImageService.captureBytes(
+                              _qrKey,
+                            );
+                            if (!context.mounted) return;
+                            context.read<GenerateCubit>().saveToHistory(bytes);
+                          }
+                        : null,
+                  ),
+                  const SizedBox(height: 12),
+                  SecondaryActionButton(
+                    label: 'Share',
+                    icon: Icons.share_outlined,
+                    onTap: state.hasContent
+                        ? () async {
+                            final bytes = await QrImageService.captureBytes(
+                              _qrKey,
+                            );
+                            if (!context.mounted) return;
+                            context.read<GenerateCubit>().shareQr(bytes);
+                          }
+                        : null,
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

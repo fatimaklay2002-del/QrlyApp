@@ -49,4 +49,8 @@ class QrImageService {
       await shareImage(bytes, text);
     }
   }
+
+  static Future<void> shareTextOnly(String text) async {
+  await SharePlus.instance.share(ShareParams(text: text));
+}
 }
