@@ -30,23 +30,29 @@ class _ScanQrCodeViewState extends State<ScanQrCodeView> {
   }
 
   Future<void> _onDetect(BarcodeCapture capture) async {
-    final value =
-    capture.barcodes.isNotEmpty ? capture.barcodes.first.rawValue : null;
+    final value = capture.barcodes.isNotEmpty
+        ? capture.barcodes.first.rawValue
+        : null;
     if (value == null || value.isEmpty) return;
     if (context.read<ScanCubit>().state.isProcessing) return;
 
     final now = DateTime.now();
-    if (_ignoreDetectionsUntil != null && now.isBefore(_ignoreDetectionsUntil!)) {
+    if (_ignoreDetectionsUntil != null &&
+        now.isBefore(_ignoreDetectionsUntil!)) {
       return;
     }
-
     await _controller.stop();
-     context.read<ScanCubit>().handleDetected(value);
-    if (mounted) await showScanResultDialog(context, value);
+
+
+    if (!mounted) return;
+    await context.read<ScanCubit>().handleDetected(value);
+    if (!mounted) return;
+    await showScanResultDialog(context, value);
 
     _ignoreDetectionsUntil = DateTime.now().add(const Duration(seconds: 3));
     await _controller.start();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

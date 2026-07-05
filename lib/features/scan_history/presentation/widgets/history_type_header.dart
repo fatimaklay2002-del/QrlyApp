@@ -1,12 +1,12 @@
-import 'package:Qrly/core/theme/app_text_style.dart';
-import 'package:Qrly/core/utils/app_color.dart';
+import 'package:qrly_app/core/theme/app_text_style.dart';
+import 'package:qrly_app/core/utils/app_color.dart';
 import 'package:flutter/widgets.dart';
 
 class HistoryTypeHeader extends StatelessWidget {
   final String label;
- 
+
   const HistoryTypeHeader({super.key, required this.label});
- 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,4 +21,3 @@ class HistoryTypeHeader extends StatelessWidget {
     );
   }
 }
- 

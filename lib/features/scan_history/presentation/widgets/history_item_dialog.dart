@@ -1,6 +1,5 @@
- 
-import 'package:Qrly/core/models/scan_history_model.dart';
-import 'package:Qrly/features/scan_history/logic/history_cubit.dart';
+import 'package:qrly_app/core/models/scan_history_model.dart';
+import 'package:qrly_app/features/scan_history/logic/history_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +19,9 @@ Future<void> showHistoryItemDialog(
         TextButton.icon(
           onPressed: () {
             Clipboard.setData(ClipboardData(text: item.content));
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('Copied to clipboard')));
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Copied to clipboard')),
+            );
           },
           icon: const Icon(Icons.copy),
           label: const Text('Copy'),

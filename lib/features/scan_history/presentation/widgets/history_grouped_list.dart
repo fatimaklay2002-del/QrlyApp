@@ -1,7 +1,8 @@
-import 'package:Qrly/features/scan_history/presentation/widgets/history_item_dialog.dart';
-import 'package:Qrly/features/scan_history/presentation/widgets/history_type_header.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qrly_app/features/scan_history/presentation/widgets/history_item_dialog.dart';
+import 'package:qrly_app/features/scan_history/presentation/widgets/history_type_header.dart';
 
 import '../../../../core/models/scan_history_model.dart';
 import '../../../../core/utils/date_time_helper.dart';
